@@ -1,19 +1,34 @@
+import { useState } from 'react';
+
 import InventoryTable from './InventoryTable'
 import InventoryChart from './InventoryChart'
 import SideMenu from './SideMenu'
 import FunctionBar from './FunctionBar'
-import ModalFields from './ModalFields'
-import Modal from './Modal'
 
 const LandingPage = () => {
+
+    const [inventories, setInventories] = useState([]);
+
     return (
         <>
             <div><SideMenu /></div>
-            <div><FunctionBar /></div>
-            <div><Modal /></div>
-            <div><ModalFields /></div>
-            <div><InventoryTable /></div>
-            <div><InventoryChart /></div>
+
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <FunctionBar inventories={inventories} insertItem={setInventories}/>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col">
+                        <InventoryTable inventories={inventories}/>
+                    </div>
+                    <div className="col">
+                        <InventoryChart />
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
