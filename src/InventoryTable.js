@@ -21,7 +21,7 @@ const InventoryTable = ({inventories}) => {
                             <td>{inventory.count}</td>
                             <td>{inventory.category}</td>
                             <td>{inventory.condition}</td>
-                            <td>{inventory.section}</td>
+                            <td>{inventory.section.label}</td>
                             </tr>
                         )
                     }

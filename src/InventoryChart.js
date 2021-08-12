@@ -27,7 +27,8 @@ const data = {
     ],
   };
 
-const InventoryChart = () => {
+const InventoryChart = ({inventories}) => {
+  
     return (
         <>
         <Doughnut data={data} width={700} height={750} options={{ maintainAspectRatio: false }}/>

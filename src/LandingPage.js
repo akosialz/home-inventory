@@ -25,7 +25,7 @@ const LandingPage = () => {
                         <InventoryTable inventories={inventories}/>
                     </div>
                     <div className="col">
-                        <InventoryChart />
+                        <InventoryChart inventories={inventories} />
                     </div>
                 </div>
             </div>
