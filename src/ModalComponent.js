@@ -4,6 +4,17 @@ import { Formik } from "formik";
 
 import "./Modal.css";
 
+const categoryList = [
+      { value: 1, label: "School Items" },
+      { value: 2, label: "Pictures" },
+      { value: 3, label: "Screws & Bolts" },
+      { value: 4, label: "Tapes" },
+      { value: 5, label: "Appliances" },
+      { value: 6, label: "Books" },
+      { value: 7, label: "Unused" },
+      { value: 8, label: "Other Papers" },
+      { value: 9, label: "Toys & Consoles" }];
+
 const conditionList = ["New", "Mint", "Broken"];
 
 const areaSectionList = [
@@ -46,7 +57,7 @@ const areaSectionList = [
   },
 
   { value: "K", label: "Kitchen Area", 
-    section: [
+    sections: [
       { value: "1 ", label: "Stock Area" }, 
       { value: "2 ", label: "Drawers" }, 
       { value: "3 ", label: "Cabinets"}
@@ -149,16 +160,20 @@ const ModalComponent = ({ inventories, insertItem }) => {
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
+
+            {/* Count */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Count</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 name="count"
                 onChange={(e) => {
                   setCount(e.target.value);
                 }}
               />
             </Form.Group>
+
+            {/* Category */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Select
                 className="me-sm-2"
@@ -169,11 +184,15 @@ const ModalComponent = ({ inventories, insertItem }) => {
                 }}
               >
                 <option value="0">-- Category --</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {
+                  categoryList.map((object, i) => {
+                    return <option key={i} value={object.value}>{object.label}</option>;
+                  })
+                }
               </Form.Select>
             </Form.Group>
+
+            {/* Condition */}
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Select
                 className="me-sm-2"
